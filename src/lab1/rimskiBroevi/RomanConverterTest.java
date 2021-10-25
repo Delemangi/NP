@@ -1,4 +1,4 @@
-package rimski.broevi;
+package lab1.rimskiBroevi;
 
 import java.util.ArrayList;
 import java.util.HashMap;

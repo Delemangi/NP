@@ -1,4 +1,4 @@
-package sistem.za.bankarsko.rabotenje;
+package lab1.sistemZaBankarskoRabotenje;
 
 import java.util.*;
 import java.util.stream.Collectors;

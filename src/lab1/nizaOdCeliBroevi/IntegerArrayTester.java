@@ -1,4 +1,4 @@
-package niza.od.celi.broevi;
+package lab1.nizaOdCeliBroevi;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
