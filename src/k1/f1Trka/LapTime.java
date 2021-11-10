@@ -30,6 +30,6 @@ public class LapTime implements Comparable<LapTime> {
 
     @Override
     public String toString() {
-        return minutes + ":" + seconds + ":" + milliseconds;
+        return String.format("%01d:%02d:%03d", minutes, seconds, milliseconds);
     }
 }

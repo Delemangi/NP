@@ -29,6 +29,6 @@ public class Pilot implements Comparable<Pilot> {
 
     @Override
     public String toString() {
-        return String.format("%-10s %10s", name, getBestTime().toString());
+        return String.format("%-10s%10s", name, getBestTime().toString());
     }
 }
