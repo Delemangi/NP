@@ -9,13 +9,13 @@ public class PizzaItem implements Item {
         if (type.equals("Standard") || type.equals("Pepperoni") || type.equals("Vegetarian")) {
             this.type = type;
         } else {
-            throw new InvalidPizzaTypeException("");
+            throw new InvalidPizzaTypeException();
         }
     }
 
     @Override
     public String getType() {
-        return "Pizza";
+        return type;
     }
 
     @Override

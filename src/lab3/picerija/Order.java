@@ -1,63 +1,66 @@
 package lab3.picerija;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Order {
-    private final Map<Item, Integer> list;
+    private final List<Product> list;
+    private boolean locked;
 
     public Order() {
-        this.list = new HashMap<>();
+        this.list = new ArrayList<>();
+        this.locked = false;
     }
 
-    public void addItem(Item item, int count) throws ItemOutOfStockException {
+    public void addItem(Item item, int count) throws ItemOutOfStockException, OrderLockedException {
         if (count > 10) {
-            throw new ItemOutOfStockException(item);
+            throw new ItemOutOfStockException(count);
         }
 
-        for (Map.Entry<Item, Integer> i : list.entrySet()) {
-            if (i.getKey().equals(item)) {
-                i.setValue(count);
+        if (locked) {
+            throw new OrderLockedException();
+        }
+
+        for (Product p : list) {
+            if (p.getItem().equals(item)) {
+                p.setCount(count);
                 return;
             }
         }
 
-        list.put(item, count);
+        list.add(new Product(item, count));
     }
 
-    public int getPrice() {
-        return list.entrySet().stream().mapToInt(i -> i.getKey().getPrice() * i.getValue()).sum();
+    public void removeItem(int i) throws OrderLockedException {
+        if (locked) {
+            throw new OrderLockedException();
+        }
+
+        if (i < 0 || i >= list.size()) {
+            throw new ArrayIndexOutOfBoundsException(i);
+        }
+
+        list.remove(i);
+    }
+
+    public void lock() throws EmptyOrder {
+        if (list.size() == 0) {
+            throw new EmptyOrder();
+        } else {
+            locked = true;
+        }
     }
 
     public void displayOrder() {
-        int standard = 0;
-        int vegetarian = 0;
-        int pepperoni = 0;
-        int coke = 0;
-        int ketchup = 0;
+        StringBuilder sb = new StringBuilder();
 
-        for (Map.Entry<Item, Integer> i : list.entrySet()) {
-            switch (i.getKey().getType()) {
-                case "Standard":
-                    standard++;
-                    break;
-                case "Pepperoni":
-                    pepperoni++;
-                    break;
-                case "Vegetarian":
-                    vegetarian++;
-                    break;
-                case "Coke":
-                    coke++;
-                    break;
-                default:
-                    ketchup++;
-                    break;
-            }
-        }
+        list.stream().forEach(i -> sb.append(String.format("%3d.%-15sx%2d%5d$%n", list.indexOf(i) + 1, i.getItem().getType(), i.getCount(), i.getItem().getPrice() * i.getCount())));
+        sb.append(String.format("%-22s%5d$", "Total:", getPrice()));
 
-        if (standard != 0) {
-            System.out.println();
-        }
+        System.out.println(sb.toString());
+    }
+
+    public int getPrice() {
+        return list.stream().mapToInt(i -> i.getItem().getPrice() * i.getCount()).sum();
     }
 }

@@ -9,13 +9,13 @@ public class ExtraItem implements Item {
         if (type.equals("Coke") || type.equals("Ketchup")) {
             this.type = type;
         } else {
-            throw new InvalidExtraTypeException("");
+            throw new InvalidExtraTypeException();
         }
     }
 
     @Override
     public String getType() {
-        return "Extra";
+        return type;
     }
 
     @Override
