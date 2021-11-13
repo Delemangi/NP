@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-class RealLog implements ILog, Comparable<RealLog> {
+public class RealLog implements ILog, Comparable<RealLog> {
     String type;
     String message;
     long timestamp;

@@ -1,6 +1,6 @@
 package k1.logProcessor;
 
-class DummyLog implements ILog, Comparable<DummyLog> {
+public class DummyLog implements ILog, Comparable<DummyLog> {
     private final String type;
     private String message;
     private final long timestamp;
