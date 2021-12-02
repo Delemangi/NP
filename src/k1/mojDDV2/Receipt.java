@@ -45,6 +45,6 @@ public class Receipt {
 
     @Override
     public String toString() {
-        return String.format("%10s\t%10d\t%10.5f", ID, totalAmount(), totalTaxReturn() * 0.15);
+        return String.format("%10s\t%10d\t%10.5f", ID, totalAmount(), totalTaxReturn());
     }
 }

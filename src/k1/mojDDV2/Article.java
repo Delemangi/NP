@@ -11,9 +11,9 @@ public class Article {
 
     public double getTax() {
         if (type.equals("A")) {
-            return amount * 0.18;
+            return amount * 0.18 * 0.15;
         } else if (type.equals("B")) {
-            return amount * 0.05;
+            return amount * 0.05 * 0.15;
         } else {
             return 0;
         }
