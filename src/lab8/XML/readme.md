@@ -9,17 +9,17 @@
 
 пример:
 
-`<student type="redoven" smer="KNI"> Trajce Trajkov </student>`
+`<record type="redoven" smer="KNI"> Trajce Trajkov </record>`
 
 Но XML може да има и посложена структура, односно наместо вредност (value) да содржи други XML елементи. Тие XML (под)
 елементи може да содржат други XML елементи итн. Пример:
 
-`<student type="redoven">
+`<record type="redoven">
 <name>
 <first-name>Trajce</first-name>
 <last-name>Trajkov</last-name>
 </name>
-</student>`
+</record>`
 
 За таа цел потребно е да дефинирате интерфејст `XMLComponent` и од истиот да креирате две класи `XMLLeaf`
 и `XMLComposite`.

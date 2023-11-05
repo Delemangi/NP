@@ -15,7 +15,7 @@
       семестар. Во таков случај да се испечати порака од
       формат `Student [studentID] already has 3 grades in term [term]`. Со истиот тип на исклучок да се спречи додавање
       на оценка во семестар поголем од 6 за тригодишни студии односно во семестар поголем од 8 за четиригодишни студии.
-      Во овој случај да се испечати порака `Term [term] is not possible for student with ID [studentId]`.
+      Во овој случај да се испечати порака `Term [term] is not possible for record with ID [studentId]`.
     - Да се детектира дипломирање на студентот. Студентот дипломира тогаш кога ќе положи 18 или 24 предмети во зависност
       од тоа колку години студира. Во моментот на дипломирање на студентот истиот треба да се избрише од евиденцијата и
       да се зачува лог за него во формат `Student with ID [studentID] graduated with average grade [averageGrade]
@@ -31,7 +31,7 @@
   … ….. Term n:
   Courses: [count]
   Average grade for term: [average]
-  Average grade: [average grade for student]
+  Average grade: [average grade for record]
   Courses attended: [all_attended_courses, comma-separated, сортирани лексикографски]`
 
 - Метод `void printFirstNStudents (int n)` - метод којшто ќе ги испечати краток извештај за најдобрите `n` студенти (
